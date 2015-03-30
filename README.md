@@ -2,6 +2,7 @@ Base64Image Plugin for CKEditor 4
 =================================
 
 Created by ALL-INKL.COM - Neue Medien Münnich - 04. Feb 2014
+Adapted by Contractual.ly - March 2014.
 
 Adds images from local client as base64 string into the source without server
 side processing. You can also add external image urls into the source.
@@ -19,3 +20,8 @@ The Browser must support the JavaScript File API.
 	
  3. Enable the plugin by using the extraPlugins configuration setting.
 	Example: CKEDITOR.config.extraPlugins = "base64image";
+
+## Configuration
+
+Optionally add `config.base64image_disableUrlImages = true;` to your CKEditor config to disable the option to add
+external image URLs.

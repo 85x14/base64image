@@ -167,7 +167,7 @@ CKEDITOR.dialog.add("base64imageDialog", function(editor){
 		elem.setValue(v+u);
 	}
 	
-	if(fsupport) {
+	if(fsupport && !editor.config.base64image_disableUrlImages) {
 		
 		/* Dialog with file and url image source */
 		var sourceElements = [
@@ -214,7 +214,7 @@ CKEDITOR.dialog.add("base64imageDialog", function(editor){
 			}
 		];
 		
-	} else {
+	} else if(!editor.config.base64image_disableUrlImages) {
 		
 		/* Dialog with url image source */
 		var sourceElements = [
@@ -230,8 +230,23 @@ CKEDITOR.dialog.add("base64imageDialog", function(editor){
 				html: new CKEDITOR.template("<div style=\"text-align:center;\"></div>").output()
 			}
 		];
-	}
-	
+	} else {
+      /* Dialog with only file source */
+      var sourceElements = [
+      {
+        type: "file",
+        id: "file",
+        label: "",
+        onChange: function(){ imagePreview("file"); }
+      },
+			{
+				type: "html",
+				id: "preview",
+				html: new CKEDITOR.template("<div style=\"text-align:center;\"></div>").output()
+			}
+		];
+  }
+
 	/* Dialog */
     return {
 		title: editor.lang.common.image,
@@ -239,7 +254,7 @@ CKEDITOR.dialog.add("base64imageDialog", function(editor){
         minHeight: 180,
 		onLoad: function(){
 			
-			if(fsupport) {
+			if(fsupport && !editor.config.base64image_disableUrlImages) {
 				
 				/* Get checkboxes */
 				urlCB = this.getContentElement("tab-source", "urlcheckbox");
