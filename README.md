@@ -2,6 +2,7 @@ Base64Image Plugin for CKEditor 4
 =================================
 
 Created by ALL-INKL.COM - Neue Medien Münnich - 04. Feb 2014
+
 Adapted by Contractual.ly - March 2014.
 
 Adds images from local client as base64 string into the source without server
